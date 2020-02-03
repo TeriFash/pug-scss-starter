@@ -1,8 +1,13 @@
-# Webpack + pug + scss
-List of command line: 
-`npm i` install all packages.  
+# My site visit card / Webpack + pug + scss
 
-`npm run start` \ `yarn start` - Watch mode in development    
+List of command line: 
+
+install all packages.
+`npm i`
+
+Watch mode in development.   
+`npm run start`
+`yarn start`
 
 All output at `dist` folder.  
 
