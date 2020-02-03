@@ -1,11 +1,10 @@
 # My site visit card / Webpack + pug + scss
 
-List of command line: 
+List of command line:
 
-install all packages.
-`npm i`
+`npm i` install all packages.
 
-Watch mode in development.   
+Watch mode in development.
 `npm run start`
 `yarn start`
 
