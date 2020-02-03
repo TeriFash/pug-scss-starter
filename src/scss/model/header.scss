@@ -1,0 +1,122 @@
+.my-nav-logo,
+.my-nav-menu {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.my-nav-logo {
+  color: $my-primary;
+  transition: color .3s ease-in-out;
+  padding-left: 0;
+
+  &:hover, &:visited, &:active {
+    color: $my-primary;
+    opacity: .7;
+  }
+
+  > * {
+    margin-right: 3px;
+  }
+}
+
+.my-nav-menu {
+  padding: 0;
+  min-height: 30px;
+  justify-content: space-between;
+  align-items: center;
+
+  @extend .my-transition;
+
+  &:hover, &:visited, &:active {
+    color: inherit;
+    opacity: .7;
+  }
+
+  > .title {
+    font-size: 14px;
+    line-height: 30px;
+    margin-right: 8px;
+  }
+
+  > * {
+
+  }
+}
+
+.my-nav-link {
+  li:nth-last-child(2) {
+    margin-bottom: 20px;
+  }
+}
+
+.my-offcanvas-nav {
+
+  &.uk-open {
+    .uk-offcanvas-slide {
+      border-right: 1px solid black;
+
+      &::before {
+        z-index: -1;
+        display: block!important;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 390px;
+        background: $my-primary;
+        border-right: 1px solid black;
+      }
+    }
+  }
+
+  .uk-offcanvas-bar {
+    overflow-y: visible;
+
+    .uk-nav {
+      .uk-active {
+
+      }
+    }
+  }
+
+  [uk-close] {
+    top: 16px;
+    right: -35px;
+    color: $global-secondary-background;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover, &:visited, &:active {
+      //color: $my-primary;
+    }
+  }
+}
+
+.my-social-icon {
+  margin-top: 20px;
+  justify-content: space-between;
+  padding: 0 30px;
+
+  li {
+    padding: 0;
+
+    a {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //border: 1px solid transparent;
+      @extend .my-transition;
+
+      //&:hover, &:visited, &:active {
+      //  border: 1px solid black;
+      //}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+header.header.uk-margin.uk-padding.uk-padding-remove-vertical
+  // Menu
+  nav.uk-navbar-container.uk-navbar-transparent(uk-navbar="mode: click")
+    div.uk-navbar-left
+      a.uk-navbar-item.uk-logo.my-nav-logo(href='/')
+        span t
+        span f
+    div.uk-navbar-right
+      a.uk-navbar-toggle.uk-navbar-item.my-nav-menu(href="#offcanvas-nav-primary" uk-toggle="target: #offcanvas-nav-primary")
+        span.uk-margin-small-right.title Меню
+        span(uk-navbar-toggle-icon)
+  div.my-offcanvas-nav#offcanvas-nav-primary(uk-offcanvas="overlay: true; mode: slide;")
+    div.uk-offcanvas-bar.uk-flex.uk-flex-column.uk-flex-center
+      button.uk-offcanvas-close(type="button" uk-close)
+      // Menu list item
+      div
+        ul.my-nav-link.uk-nav.uk-nav-primary.uk-nav-center
+          li.uk-active
+            a(href='/') Главная
+          li
+            a(href="#") Обо мне
+          li
+            a(href="#") Услуги
+          li
+            a(href="#") Проекты
+          li
+            a(href="/contact.html") Контакты
+          li.uk-nav-divider
+        // Menu list social
+        ul.uk-iconnav.my-social-icon
+          li
+            a.uk-icon-button(href="#" uk-icon="icon: facebook; ratio: 1.3")
+          li
+            a.uk-icon-button(href="#" uk-icon="icon: github-alt; ratio: 1.3")
+          li
+            a.uk-icon-button(href="#" uk-icon="icon: linkedin; ratio: 1.3")
+          li
+            a.uk-icon-button(href="#" uk-icon="icon: receiver; ratio: 1.3")

@@ -1,0 +1,88 @@
+// ----------- mouse effect
+
+.my-mouse {
+  position: absolute;
+  transition: all 1s ease-in-out;
+  width: 20px;
+  height: 42px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: -12px;
+  border-radius: 15px;
+  border: 2px solid #888;
+  -webkit-animation: intro 1s;
+  animation: intro 1s;
+
+  & .scroll {
+    display: block;
+    width: 3px;
+    height: 3px;
+    margin: 6px auto;
+    border-radius: 4px;
+    background: $my-primary;
+    -webkit-animation: finger 2s infinite;
+    animation: finger 2s infinite;
+  }
+}
+
+.uk-offcanvas-container {
+  .my-mouse {
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    bottom: -100px;
+  }
+}
+
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+
+@keyframes finger {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+// link underbar
+
+.underbar a,
+a.underbar {
+  position: relative;
+  text-decoration: none;
+  display: inline;
+  color: inherit;
+
+  transition: all .3s ease;
+}
+
+.underbar a::after,
+a.underbar::after {
+  position: absolute;
+  background: rgba($my-primary, 0.7);
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: all .3s ease;
+
+}
+
+.underbar a:hover::after,
+a.underbar:hover::after {
+  width: 100%
+}

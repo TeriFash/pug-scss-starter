@@ -1,0 +1,81 @@
+footer {
+  background: $global-background;
+
+  [class*=my-footer] {
+    color: $global-color;
+
+    a {
+      color: inherit;
+
+      &:hover, &:visited, &:active {
+        color: $global-color;
+      }
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        a {
+          height: 100%;
+          color: inherit;
+
+          svg {
+            color: $global-color;
+            fill: $global-color;
+          }
+        }
+      }
+    }
+
+    &:not(.my-footer-social) {
+      ul {
+        padding-left: 0;
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 33px;
+        }
+      }
+    }
+  }
+
+  .my-footer-social {
+
+    .my-social-icon a {
+      background-color: transparent;
+    }
+
+    .copy {
+      a {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .my-footer-contact {
+    li {
+      position: relative;
+      padding-left: 40px;
+      justify-content: flex-start !important;
+
+      &:nth-child(2) {
+        align-items: flex-start !important;
+        min-height: 25px !important;
+        margin-bottom: 5px;
+      }
+
+      a {
+        line-height: inherit;
+        svg {
+          top: 50%;
+          transform: translateY(-50%);
+          left: -33px;
+          position: absolute;
+        }
+      }
+    }
+  }
+}
