@@ -1,11 +1,14 @@
-$global-background: #eaeaea;
+$global-background: #EBECF0;
+$global-font-family: "Poppins", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 $my-primary: #ee6058;
 
 $navbar-nav-item-height: 60px;
 
 $offcanvas-bar-width: 350px;
-$offcanvas-overlay-background: rgba(0,0,0,0.4);
-$offcanvas-bar-background: $my-primary;
+$offcanvas-overlay-background: rgba(0,0,0,0.1);
+$offcanvas-bar-background: rgba(0,0,0,0.5);
 
 $card-primary-background: $my-primary;
+
+$my_neumorphic-shadow: 20;

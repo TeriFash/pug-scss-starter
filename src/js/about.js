@@ -7,4 +7,4 @@ UIkit.use(Icons);
 
 // Run your page code here.
 
-console.log('hello about.html');
+console.log('hello about.html', jpg);

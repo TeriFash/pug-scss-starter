@@ -125,12 +125,13 @@ module.exports = {
                 ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
-            test: /\.(gif|png|jpe?g)$/,
+            test: /\.(gif|png|svg|jpe?g)$/,
             use: [{
                 loader: 'file-loader',
                 options: {
-                    name: '[name]-[hash:8].[ext]',
+                    name: '[name].[ext]',
                     outputPath: 'img/',
+                    publicPath: 'img/',
                 },
             },
             {
