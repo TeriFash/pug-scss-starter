@@ -1,13 +1,16 @@
 $global-background: #EBECF0;
+$global-color: #a3aab9;
 $global-font-family: "Poppins", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 
 $my-primary: #ee6058;
+$my-text-color: #6D7587;
 
 $navbar-nav-item-height: 60px;
 
-$offcanvas-bar-width: 350px;
-$offcanvas-overlay-background: rgba(0,0,0,0.1);
-$offcanvas-bar-background: rgba(0,0,0,0.5);
+$offcanvas-bar-color-mode: dark;
+$offcanvas-bar-width: 400px;
+$offcanvas-overlay-background: rgba(255,255,255,0.5);
+$offcanvas-bar-background: #f2f2f2;
 
 $card-primary-background: $my-primary;
 

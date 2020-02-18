@@ -6,12 +6,27 @@ header.header.uk-padding.uk-padding-remove-vertical
         span t
         span f
     div.uk-navbar-right
-      a.uk-navbar-toggle.uk-navbar-item.my-nav-menu(href="#offcanvas-nav-primary" uk-toggle="target: #offcanvas-nav-primary")
-        span.uk-margin-small-right.title Меню
-        span(uk-navbar-toggle-icon)
+      a.uk-navbar-item.my-nav-menu#hamburger.hamburglar.is-closed(href="#offcanvas-nav-primary" uk-toggle="target: #offcanvas-nav-primary")
+        .burger-icon
+          .burger-container
+            span.burger-bun-top
+            span.burger-filling
+            span.burger-bun-bot
+        // svg ring containter
+        .burger-ring
+          svg.svg-ring
+            path.path(fill='none', stroke='#a3aab9', stroke-miterlimit='10', stroke-width='4', d='M 34 2 C 16.3 2 2 16.3 2 34 s 14.3 32 32 32 s 32 -14.3 32 -32 S 51.7 2 34 2')
+        // the masked path that animates the fill to the ring
+        svg(width='0', height='0')
+          mask#mask
+            path(xmlns='http://www.w3.org/2000/svg', fill='none', stroke='#ff0000', stroke-miterlimit='10', stroke-width='4', d='M 34 2 c 11.6 0 21.8 6.2 27.4 15.5 c 2.9 4.8 5 16.5 -9.4 16.5 h -4')
+        .path-burger
+          .animate-path
+            .path-rotation
+
   div.my-offcanvas-nav#offcanvas-nav-primary(uk-offcanvas="overlay: true; mode: slide;")
     div.uk-offcanvas-bar.uk-flex.uk-flex-column.uk-flex-center
-      button.uk-offcanvas-close(type="button" uk-close)
+      //button.uk-offcanvas-close(type="button" uk-close)
       // Menu list item
       div
         ul.my-nav-link.uk-nav.uk-nav-primary.uk-nav-center

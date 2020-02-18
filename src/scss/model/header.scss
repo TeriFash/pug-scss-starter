@@ -1,10 +1,30 @@
-$svgfilter: url("/img/bgblur.svg#svgfilter");
+//svgfilter: url("/img/bgblur.svg#svgfilter");
+
+
+*,
+*::before,
+*::after {
+  //box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-input-placeholder {
+    color: #222;
+  }
+  &::-moz-placeholder {
+    color: #222;
+  }
+}
+
 
 .my-nav-logo,
 .my-nav-menu {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  color: $global-color;
 }
 
 .my-nav-logo {
@@ -23,87 +43,462 @@ $svgfilter: url("/img/bgblur.svg#svgfilter");
 }
 
 .my-nav-menu {
+  $scale: 0.6;
+  $animation: 0.6s;
+
   padding: 0;
+  margin-right: -25px;
   min-height: 30px;
   justify-content: space-between;
   align-items: center;
 
   @extend .my-transition;
 
+  &.hamburglar {
+    transform: scale($scale);
+    position: relative;
+    display: block;
+    width: 68px;
+    height: 68px;
+    background: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+    z-index: 1001;
+  }
+
+  // transition mask
+  .path-burger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 68px;
+    width: 68px;
+    // two masks because... browser support.
+    mask: url(#mask);
+    -webkit-mask-box-image: url(https://raygun.io/upload/mask.svg);
+  }
+
+  .animate-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68px;
+    height: 68px;
+  }
+
+  // what this does is create a small square that I then rotate behind an svg mask, giving the apparence of the line animating
+  .path-rotation {
+    height: 34px;
+    width: 34px;
+    margin: 34px 34px 0 0;
+    transform: rotate(0deg);
+    transform-origin: 100% 0;
+    &:before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 34px;
+      margin: 0 4px 0 0;
+      background: $global-color;
+    }
+  }
+
+  // box rotation animation
+  @keyframes rotate-out {
+    0% {
+      transform: rotate(0deg);
+    }
+    40% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate-in {
+    0% {
+      transform: rotate(360deg);
+    }
+    40% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  &.hamburglar.is-open {
+    .path {
+      animation: dash-in $animation linear normal;
+      animation-fill-mode:forwards;
+      stroke: #333;
+    }
+    .animate-path {
+      animation: rotate-in $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+
+    .burger-bun-top,
+    .burger-bun-bot,
+    .burger-filling {
+      background: #333;
+    }
+  }
+
+  &.hamburglar.is-closed {
+    .path {
+      animation: dash-out $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+    .animate-path {
+      animation: rotate-out $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+  }
+
+  .path {
+    stroke-dasharray: 240;
+    stroke-dashoffset: 240;
+    stroke-linejoin: round;
+  }
+
+  @keyframes dash-in {
+    0% {
+      stroke-dashoffset: 240;
+    }
+    40% {
+      stroke-dashoffset: 240;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes dash-out {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    40% {
+      stroke-dashoffset: 240;
+    }
+    100% {
+      stroke-dashoffset: 240;
+    }
+  }
+
+
+  .burger-icon {
+    position: absolute;
+    padding: 20px 16px;
+    height: 68px;
+    width: 68px;
+  }
+
+  .burger-container {
+    position: relative;
+    height: 28px;
+    width: 36px;
+  }
+
+  .burger-bun-top,
+  .burger-bun-bot,
+  .burger-filling {
+    position: absolute;
+    display: block;
+    height: 4px;
+    width: 36px;
+    border-radius: 2px;
+    background: $global-color;
+  }
+
+  .burger-bun-top {
+    top: 0;
+    transform-origin: 34px 2px;
+  }
+
+  .burger-bun-bot {
+    bottom: 0;
+    transform-origin: 34px 2px;
+  }
+
+  .burger-filling {
+    top: 12px;
+  }
+
+
+  // burger ring container
+  .burger-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68px;
+    height: 68px;
+  }
+
+  .svg-ring {
+    width: 68px;
+    height: 68px;
+
+    .path {
+      stroke: $global-color;
+    }
+  }
+
+
+  // bun animations
+  &.hamburglar.is-open {
+    .burger-bun-top {
+      animation: bun-top-out $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+    .burger-bun-bot {
+      animation: bun-bot-out $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+  }
+  &.hamburglar.is-closed {
+    .burger-bun-top {
+      animation: bun-top-in $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+    .burger-bun-bot {
+      animation: bun-bot-in $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+  }
+
+  @keyframes bun-top-out {
+    0% {
+      left: 0;
+      top: 0;
+      transform: rotate(0deg);
+    }
+    20% {
+      left: 0;
+      top: 0;
+      transform: rotate(15deg);
+    }
+    80% {
+      left: -5px;
+      top: 0;
+      transform: rotate(-60deg);
+    }
+    100% {
+      left: -5px;
+      top: 1px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  @keyframes bun-bot-out {
+    0% {
+      left: 0;
+      transform: rotate(0deg);
+    }
+    20% {
+      left: 0;
+      transform: rotate(-15deg);
+    }
+    80% {
+      left: -5px;
+      transform: rotate(60deg);
+    }
+    100% {
+      left: -5px;
+      transform: rotate(45deg);
+    }
+  }
+
+
+  @keyframes bun-top-in {
+    0% {
+      left: -5px;
+      bot: 0;
+      transform: rotate(-45deg);
+    }
+    20% {
+      left: -5px;
+      bot: 0;
+      transform: rotate(-60deg);
+    }
+    80% {
+      left: 0;
+      bot: 0;
+      transform: rotate(15deg);
+    }
+    100% {
+      left: 0;
+      bot: 1px;
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes bun-bot-in {
+    0% {
+      left: -5px;
+      transform: rotate(45deg);
+    }
+    20% {
+      left: -5px;
+      bot: 0;
+      transform: rotate(60deg);
+    }
+    80% {
+      left: 0;
+      bot: 0;
+      transform: rotate(-15deg);
+    }
+    100% {
+      left: 0;
+      transform: rotate(0deg);
+    }
+  }
+
+
+  // burger filling
+  &.hamburglar.is-open {
+    .burger-filling {
+      animation: burger-fill-out $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+  }
+
+  &.hamburglar.is-closed {
+    .burger-filling {
+      animation: burger-fill-in $animation linear normal;
+      animation-fill-mode:forwards;
+    }
+  }
+
+  @keyframes burger-fill-in {
+    0% {
+      width: 0;
+      left: 36px;
+    }
+    40% {
+      width: 0;
+      left: 40px;
+    }
+    80% {
+      width: 36px;
+      left: -6px;
+    }
+    100% {
+      width: 36px;
+      left: 0px;
+    }
+  }
+
+  @keyframes burger-fill-out {
+    0% {
+      width: 36px;
+      left: 0px;
+    }
+    20% {
+      width: 42px;
+      left: -6px;
+    }
+
+    40% {
+      width: 0;
+      left: 40px;
+    }
+
+    100% {
+      width: 0;
+      left: 36px;
+    }
+  }
+
   &:hover, &:visited, &:active {
     color: inherit;
-    opacity: .7;
   }
 
-  > .title {
-    font-size: 14px;
-    line-height: 30px;
-    margin-right: 8px;
-  }
-
-  > * {
-
-  }
-}
-
-
-header > nav, main {
-}
-
-.uk-offcanvas-container {
-  header > nav, main {
-    transition: filter .2s linear;
-
-    -webkit-filter: blur(4px);
-    -moz-filter: blur(3px);
-    filter: $svgfilter;
-    filter: blur(3px);
-  }
 }
 
 .my-nav-link {
+  li {
+
+    min-height: 50px;
+    max-height: 50px;
+
+    &.uk-active {
+      a {
+        color: #333 !important;
+
+        &::after {
+          background: #333 !important;
+          width: 115%;
+        }
+      }
+    }
+
+    a {
+      @extend .my-transition;
+
+      height: 100%;
+      padding: 0;
+      font-weight: bold;
+      font-size: 2rem;
+      color: $my-text-color;
+      position: relative;
+      display: inline-block;
+      opacity: 1;
+
+      &:after {
+        @extend .my-transition;
+
+        background: $my-text-color;
+        content: "";
+        position: absolute;
+        left: -7.5%;
+        top: calc(50% + 4px);
+        transform: translateY(-50%);
+        width: 0;
+        height: 3px;
+        z-index: 2;
+        border-radius: 4px;
+      }
+
+      &:focus, &:hover, &:active {
+        color: #333;
+      }
+    }
+
+    &:hover, &:visited, &:active {
+      color: #333;
+
+      a {
+        color: #333;
+
+        &:after {
+          background: #333;
+          width: 115%;
+
+        }
+
+        &:focus, &:hover, &:active {
+          color: #333;
+        }
+      }
+    }
+
+    @extend .my-transition;
+  }
+
+  .uk-nav-divider {
+    margin-top: 50px;
+  }
+
   li:nth-last-child(2) {
     margin-bottom: 20px;
   }
 }
 
 .my-offcanvas-nav {
-
-
-  &.uk-offcanvas-overlay {
-
-  }
-
-  &.uk-open {
-    .uk-offcanvas-slide {
-      //border-right: 1px solid black;
-
-      &::before {
-
-        transition: filter .1s linear;
-
-        z-index: -1;
-        display: block!important;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        //width: 390px;
-//        background: $my-primary;
-        //border-right: 1px solid black;
-
-        -webkit-filter: blur(5px);
-        -moz-filter: blur(5px);
-        filter: $svgfilter;
-        filter: blur(5px);
-      }
-
-    }
-  }
-
   .uk-offcanvas-bar {
     overflow-y: visible;
+    box-shadow: -3px -7px 25px rgba(55, 84, 170, 0.15);
 
     .uk-nav {
       .uk-active {
@@ -123,12 +518,13 @@ header > nav, main {
     }
 
     &:hover, &:visited, &:active {
-      //color: $my-primary;
+      color: $my-primary;
     }
   }
 }
 
 .my-social-icon {
+  margin-left: 0;
   margin-top: 20px;
   justify-content: space-between;
   padding: 0 30px;
@@ -137,13 +533,46 @@ header > nav, main {
     padding: 0;
 
     a {
-      width: 45px;
-      height: 45px;
+      width: 60px;
+      height: 60px;
       display: flex;
       justify-content: center;
       align-items: center;
-      //border: 1px solid transparent;
-      @extend .my-transition;
+      position: relative;
+      color: $my-text-color;
+      border-radius: 50%;
+      background: $offcanvas-bar-background;
+      transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0px -6px 10px rgba(255, 255, 255, 1), 0px 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+
+      &:after {
+        // buttons pseudo element
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        z-index: 2;
+      }
+
+      &:focus {
+        border: none;
+        outline: 0 !important;
+        outline-style: none;
+      }
+
+      &:hover, &:active {
+        color: $my-text-color;
+        // button state active
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.02);
+        &:after {
+          box-shadow: inset 0px -2px 5px rgb(255, 255, 255),
+          inset 0px 2px 5px rgba(0, 0, 0, 0.15);
+        }
+      }
 
       //&:hover, &:visited, &:active {
       //  border: 1px solid black;
@@ -151,3 +580,4 @@ header > nav, main {
     }
   }
 }
+
