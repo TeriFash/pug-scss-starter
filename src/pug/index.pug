@@ -1,50 +1,49 @@
 extends model/layout.pug
 
 block title
-  title index.html page
+    title index.html page
 
 block content
-  // Main start page content
-  main.text-container
-    section.uk-flex.uk-flex-center.uk-flex-column.uk-flex-middle(uk-height-viewport="offset-top: true")
-      div.my-intro-text.text
-        .content
-        //.cursor
-      ul.uk-breadcrumb.my-futures
-        li Веб разработка
-        li Консалтинг
-        li Поддержка
-      a.my-mouse(href="#scroll-down" uk-scroll duration="1000")
-        div.scroll
-    section.uk-height-medium.uk-flex.uk-flex-center.uk-flex-middle#scroll-down(uk-height-viewport="offset-top: true")
-      div.my-work.uk-grid-small.uk-grid-match.uk-text-center(class="uk-child-width-1-3@s" uk-grid uk-sortable="handle: .uk-card")
-        div.uk-grid-item-match
-          div.my-work-card-item.uk-card.uk-card-primary.uk-card-body.uk-card-hover.uk-transition-toggle(tabindex="0")
-            div.uk-transition-slide-left.uk-position-cover.uk-position-small.uk-overlay.uk-overlay-default.uk-flex.uk-flex-center.uk-flex-middle.uk-flex-column
-              p.uk-h4.uk-margin-remove Some desc
-              a.uk-button-primary.uk-button Go more...
-        div
-          div.my-work-card-item.uk-card.uk-card-primary.uk-card-body.uk-card-hover.uk-transition-toggle(tabindex="0")
-            div.uk-transition-fade.uk-position-cover.uk-position-small.uk-overlay.uk-overlay-default.uk-flex.uk-flex-center.uk-flex-middle.uk-flex-column
-              p.uk-h4.uk-margin-remove Some desc
-              a.uk-button-primary.uk-button Go more...
-        div
-          div.my-work-card-item.uk-card.uk-card-primary.uk-card-body.uk-card-hover.uk-transition-toggle(tabindex="0")
-            div.uk-transition-slide-right.uk-position-cover.uk-position-small.uk-overlay.uk-overlay-default.uk-flex.uk-flex-center.uk-flex-middle.uk-flex-column
-              p.uk-h4.uk-margin-remove Some desc
-              a.uk-button-primary.uk-button Go more...
-        div
-          div.my-work-card-item.uk-card.uk-card-primary.uk-card-body.uk-card-hover.uk-transition-toggle(tabindex="0")
-            div.uk-transition-slide-left.uk-position-cover.uk-position-small.uk-overlay.uk-overlay-default.uk-flex.uk-flex-center.uk-flex-middle.uk-flex-column
-              p.uk-h4.uk-margin-remove Some desc
-              a.uk-button-primary.uk-button Go more...
-        div
-          div.my-work-card-item.uk-card.uk-card-primary.uk-card-body.uk-card-hover.uk-transition-toggle(tabindex="0")
-            div.uk-transition-fade.uk-position-cover.uk-position-small.uk-overlay.uk-overlay-default.uk-flex.uk-flex-center.uk-flex-middle.uk-flex-column
-              p.uk-h4.uk-margin-remove Some desc
-              a.uk-button-primary.uk-button Go more...
-        div
-          div.my-work-card-item.uk-card.uk-card-primary.uk-card-body.uk-card-hover.uk-transition-toggle(tabindex="0")
-            div.uk-transition-slide-right.uk-position-cover.uk-position-small.uk-overlay.uk-overlay-default.uk-flex.uk-flex-center.uk-flex-middle.uk-flex-column
-              p.uk-h4.uk-margin-remove Some desc
-              a.uk-button-primary.uk-button Go more...
+    // Main start page content
+    main.text-container
+        section.uk-flex.uk-flex-center.uk-flex-column.uk-flex-middle(uk-height-viewport="offset-top: true")
+            div.my-intro-text.text
+                .content
+                //.cursor
+            ul.uk-breadcrumb.my-futures
+                li Веб разработка
+                li Консалтинг
+                li Поддержка
+            a.my-mouse(href="#scroll-down" uk-scroll duration="1000")
+                div.scroll
+        section.uk-height-medium.uk-flex.uk-flex-center.uk-flex-middle#scroll-down(uk-height-viewport="offset-top: true")
+            div.my-present(uk-scrollspy="target: [uk-scrollspy-class]; cls: uk-animation-slide-left-small; delay: false;")
+                div.uk-margin-remove-adjacent(style="height: 100px;")
+                div.uk-container.uk-container-expand-right
+                    div.uk-grid-margin.uk-grid(uk-grid)
+                        div.uk-grid-item-match.uk-flex-middle.uk-first-column(class="uk-width-auto@l")
+                            div.uk-panel.uk-width-1-1
+                                h1.uk-heading-large.uk-scrollspy-inview.uk-animation-slide-left-small.uk-scrollspy-class(uk-scrollspy-class)
+                                    span.uk-text-primary Agency
+                                    | for 3D
+                                    br(class="uk-visible@m")
+                                    | Visuali&shy;za&shy;tion and
+                                    br(class="uk-visible@m")
+                                    | Virtual Reality
+                                div.uk-text-large.uk-margin-large.uk-width-xlarge.uk-scrollspy-inview.uk-animation-slide-left-small.uk-scrollspy-class(uk-scrollspy-class)
+                                    | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.
+                        div.uk-grid-item-match(class="uk-width-expand@l")
+                            div.uk-panel.uk-width-1-1
+                                div.uk-position-relative.uk-margin-remove-vertical.uk-text-center(uk-parallax='y: 0,30;', style='left: -28%; top: 40px; transform: translateY(30px);')
+                                    video.uk-box-shadow-medium(width='300', src='/themes/joomla/2019/soda/images/yootheme/services-03-02.mp4', loop='', muted='', playsinline='', uk-video='inview', preload='none')
+                                div.uk-position-absolute.uk-width-1-1.uk-text-center(class='uk-visible@xl', uk-parallax='y: 0,-100;', style='left: 36%; top: 100px; z-index: 1; transform: translateY(0px);')
+                                    img.el-image.uk-box-shadow-medium(alt='', data-src='/themes/joomla/2019/soda/templates/yootheme/cache/work-19-b98e8bbe.webp', data-srcset='/themes/joomla/2019/soda/templates/yootheme/cache/work-19-b98e8bbe.webp 230w, /themes/joomla/2019/soda/templates/yootheme/cache/work-19-a83167f2.webp 460w', data-sizes='(min-width: 230px) 230px', data-width='230', data-height='144', uk-img='', src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="230" height="144"></svg>')
+                                div.uk-position-relative.uk-margin-remove-vertical.uk-text-center.uk-container-item-padding-remove-right(uk-parallax='y: 0,-60;', style='left: 10%; transform: translateY(-60px);')
+                                    img.el-image.uk-box-shadow-medium(alt='', data-src='/themes/joomla/2019/soda/templates/yootheme/cache/work-12-b07c75fc.webp', data-srcset='/themes/joomla/2019/soda/templates/yootheme/cache/work-12-b07c75fc.webp 600w, /themes/joomla/2019/soda/templates/yootheme/cache/work-12-1cef1acc.webp 768w, /themes/joomla/2019/soda/templates/yootheme/cache/work-12-1ce838bb.webp 1024w, /themes/joomla/2019/soda/templates/yootheme/cache/work-12-93c7d649.webp 1200w', data-sizes='(min-width: 600px) 600px', data-width='600', data-height='375', uk-img='', src='https://demo.yootheme.com/themes/joomla/2019/soda/templates/yootheme/cache/work-12-1cef1acc.webp', sizes='(min-width: 600px) 600px', srcset='/themes/joomla/2019/soda/templates/yootheme/cache/work-12-b07c75fc.webp 600w, /themes/joomla/2019/soda/templates/yootheme/cache/work-12-1cef1acc.webp 768w, /themes/joomla/2019/soda/templates/yootheme/cache/work-12-1ce838bb.webp 1024w, /themes/joomla/2019/soda/templates/yootheme/cache/work-12-93c7d649.webp 1200w')
+                                div.uk-position-absolute.uk-width-1-1.uk-text-center(id='page#10', uk-parallax='y: 0,-350;', style='left: -20%; top: 450px; transform: translateY(-319px);')
+                                    img.el-image.uk-box-shadow-medium(alt='', data-src='/themes/joomla/2019/soda/templates/yootheme/cache/work-14-cd247808.webp', data-srcset='/themes/joomla/2019/soda/templates/yootheme/cache/work-14-cd247808.webp 320w, /themes/joomla/2019/soda/templates/yootheme/cache/work-14-3a8aa161.webp 640w', data-sizes='(min-width: 320px) 320px', data-width='320', data-height='200', uk-img='', src='https://demo.yootheme.com/themes/joomla/2019/soda/templates/yootheme/cache/work-14-cd247808.webp', sizes='(min-width: 320px) 320px', srcset='/themes/joomla/2019/soda/templates/yootheme/cache/work-14-cd247808.webp 320w, /themes/joomla/2019/soda/templates/yootheme/cache/work-14-3a8aa161.webp 640w')
+                                div.uk-position-relative.uk-margin-remove-vertical.uk-text-center(class='uk-visible@m', uk-parallax='y: 50,-300;', style='left: 12%; top: 130px; z-index: 1; transform: translateY(-71px);')
+                                    video.uk-box-shadow-medium(width='350', src='/themes/joomla/2019/soda/images/yootheme/services-01-01.mp4', loop='', muted='', playsinline='', uk-video='inview', preload='none')
+                                div.uk-position-relative.uk-margin-remove-vertical.uk-text-right(class='uk-visible@l uk-text-center@m', uk-parallax='y: 160,-450;', style='left: -55%; top: -20px; z-index: 1; transform: translateY(18px);')
+                                    video.uk-box-shadow-medium(width='350', src='/themes/joomla/2019/soda/images/yootheme/services-02.mp4', loop='', muted='', playsinline='', uk-video='inview', preload='none')
+

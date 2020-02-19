@@ -1,6 +1,3 @@
-//svgfilter: url("/img/bgblur.svg#svgfilter");
-
-
 *,
 *::before,
 *::after {
@@ -13,11 +10,11 @@
   }
 
   &::-webkit-input-placeholder {
-    color: #222;
+    color: $my-black;
   }
 
   &::-moz-placeholder {
-    color: #222;
+    color: $my-black;
   }
 }
 

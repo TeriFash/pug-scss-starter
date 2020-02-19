@@ -4,7 +4,10 @@ $global-font-family: "Poppins", Roboto, "Helvetica Neue", Arial, "Noto Sans", sa
 
 $my-primary: #ee6058;
 $my-text-color: #6D7587;
+$my-background: #EBECF0;
 $my-black: #393939;
+$my-white: #EBECF0;
+$my-neumorphic-shadow: 20;
 
 $navbar-nav-item-height: 60px;
 
@@ -15,4 +18,5 @@ $offcanvas-bar-background: #f2f2f2;
 
 $card-primary-background: $my-primary;
 
-$my-neumorphic-shadow: 20;
+$text-primary-color: $my-primary;
+

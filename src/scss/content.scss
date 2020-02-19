@@ -1,3 +1,27 @@
+body {
+  background-color: $my-black;
+  padding: 0;
+
+  @media (min-width: 960px) {
+    .my-page {
+    }
+
+    padding: 12px;
+  }
+
+  @media (min-width: 1200px) {
+    .my-page {
+    }
+
+    padding: 12px;
+
+  }
+}
+
+.my-page {
+  background-color: $my-background;
+}
+
 .my-intro-text{
   &.text {
     width: 100%;

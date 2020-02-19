@@ -44,6 +44,13 @@ footer {
 
   .my-footer-social {
 
+    //padding-bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+
     .my-social-icon {
 
       margin: 0 -20px;

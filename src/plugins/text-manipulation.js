@@ -25,4 +25,4 @@ class TypeIt {
 // const demoText = new TypeIt('viewer@knave:~$ ', '.text .content', 100);
 // demoText.run();
 
-export { TypeIt }
+export { TypeIt };
