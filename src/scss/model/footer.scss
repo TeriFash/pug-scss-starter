@@ -43,8 +43,16 @@ footer {
   }
 
   .my-footer-social {
-    .my-social-icon a {
-      background-color: transparent;
+
+    .my-social-icon {
+
+      margin: 0 -20px;
+      padding: 0;
+
+      a {
+        min-height: 60px;
+        background-color: transparent;
+      }
     }
 
     .copy {

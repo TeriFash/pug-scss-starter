@@ -35,23 +35,26 @@
 @import "model/header";
 @import "model/footer";
 
+@import "content";
 
 
 .my-futures {
   align-items: center;
 
   li {
+    min-height: 40px;
     display: flex;
+    font-weight: 500;
+    font-size: 18px;
     align-items: center;
     justify-content: center;
     user-select: none;
     margin: 10px 0;
-    letter-spacing: 2px;
     text-transform: uppercase;
     color: inherit;
     //line-height: 54px;
-    font-size: 1.3em;
-
+    //font-size: 1.3em;
+    letter-spacing: 4px;
     &:before {
       //line-height: 54px;
       font-weight: bold;

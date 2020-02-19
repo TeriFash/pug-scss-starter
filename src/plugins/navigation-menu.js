@@ -1,25 +1,35 @@
 import $ from 'jquery';
 
 
-export let menuAction = $(function() {
-
-    let watching = $('#offcanvas-nav-primary');
+$(function() {
+    let watching = $('#my-menu');
     let trigger = $('#hamburger');
+    let isClosed = false;
 
     if (watching.length && trigger.length) {
-
         watching.on({
-            beforeshow() {
-                trigger.toggleClass('is-closed is-open');
+            'beforeshow': function() {
+                burgerTime();
             },
-            beforehide() {
-                trigger.toggleClass('is-open is-closed');
+            'beforehide': function() {
+                burgerTime();
             }
         });
+
     } else {
         console.warn(watching, trigger);
     }
+
+    let burgerTime = () => {
+
+        if (isClosed === true) {
+            trigger.removeClass('is-open');
+            trigger.addClass('is-closed');
+            isClosed = false;
+        } else {
+            trigger.removeClass('is-closed');
+            trigger.addClass('is-open');
+            isClosed = true;
+        }
+    }
 });
-
-
-export default { menuAction };

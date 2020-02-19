@@ -1,0 +1,61 @@
+.my-intro-text{
+  &.text {
+    width: 100%;
+    text-align: center;
+    height: 130px;
+    line-height: 130px;
+    font-size: 130px;
+    font-weight: 700;
+
+    //position: absolute;
+    //top: 0;
+    //bottom: 0;
+    //margin: auto;
+
+    & .content{
+      user-select: none;
+      text-transform: uppercase;
+      color: $my-black;
+      display: inline-flex;
+
+      &::after {
+        height: 130px;
+        line-height: 130px;
+        font-size: 130px;
+        bottom: 0;
+        right: 0;
+        color: $my-primary;
+        display: inline-block;
+        content: '.';
+        font-weight: bolder;
+
+        animation: blink-my-intro 1s 3 linear;
+      }
+
+
+    }
+
+    & .cursor{
+      //color: $my-primary;
+      //display: inline-block;
+      //font-weight: bolder;
+      //
+      //animation: blink-my-intro .7s 4 linear;
+    }
+  }
+}
+
+@keyframes blink-my-intro {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  99%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
