@@ -1,0 +1,28 @@
+.my-modal {
+  .uk-modal-title {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 1px 1px 1px $color-white;
+      color: $global-color;
+
+
+  }
+
+  .uk-modal-header {
+    border-bottom: none;
+  }
+
+  .uk-modal-body {
+    padding: 30px;
+  }
+
+  .uk-modal-footer {
+    border-top: none;
+
+    .uk-button-primary.send {
+      margin-left: 12px;
+      //background: $my-black;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import '../scss/app.scss';
 import './../plugins/navigation-menu';
 
+// import './../plugins/text-manipulation';
 import { TypeIt } from './../plugins/text-manipulation';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
