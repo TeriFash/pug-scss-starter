@@ -1,3 +1,23 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $my-black;
+  }
+
+  &::-moz-placeholder {
+    color: $my-black;
+  }
+}
+
 body {
   background-color: $my-black;
   padding: 0;

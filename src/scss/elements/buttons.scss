@@ -1,4 +1,6 @@
 .uk-button {
+  line-height: normal;
+
   &-primary {
     border: 0;
     outline: 0;
@@ -12,7 +14,7 @@
     cursor: pointer;
     min-width: 130px;
     min-height: 48px;
-    font-weight: 600;
+    font-weight: 500;
     display: inline-flex;
     align-items: center;
     justify-content: center;

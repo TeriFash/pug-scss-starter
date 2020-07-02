@@ -179,13 +179,20 @@ module.exports = {
         compress: true,
         host: '0.0.0.0',
         port: 8080,
+        hot: true,
         //mode: 'development',
         // stats: 'minimal',
         // for vagrant fix
         stats: {
             color: true,
             modules: false,
-            minimal: false
+            minimal: true,
+            assets: true,
+            children: false,
+            // outputPath: true
+            performance: true,
+            timings: true
+
         },
         watchOptions: {
             poll: true,
