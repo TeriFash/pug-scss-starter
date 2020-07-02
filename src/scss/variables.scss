@@ -1,28 +1,51 @@
-$global-background: #EBECF0;
-$global-color: #a3aab9;
-$global-font-family: "Poppins", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$white: #fff;
+$black: #000;
+$violet: #4a208a;
+$violet-light: #5c5996;
+$red: #e75942;
 
-$my-primary: #ee6058;
-$my-text-color: #6D7587;
-$my-background: #EBECF0;
-$my-black: #393939;
-$my-white: #EBECF0;
-$my-neumorphic-shadow: 20;
+$global-background: $white;
+$global-color: $black;
+$global-font-family: 'Montserrat Regular', "Montserrat", Roboto, "Helvetica Neue" !default;
 
-$ruler: 16px;
-$color-red: #AE1100;
-$color-bg: #EBECF0;
-$color-shadow: #BABECC;
-$color-white: #FFF;
+$primary: $violet;
+$accent: $red;
+$neumorphic-shadow: 20;
+$background: #efedf2;
+$background-dark: #dcdde5;
+$text-color-dark: #3f3f3f;
+$text-color: #565656;
+$padding-default: 80px;
+$border: 6px;
+
+$gragient-pink-color: #fe80a1;
+$gragient-green-color: #94ebb0;
+$gragient-blue-color: #3a83e1;
+$gragient-violet-color: #8f5cff;
+$gragient-orenge-color: #f98656;
+$gragient-blue-violet-color: #763eec;
+
+$gragient-pink: linear-gradient(45deg, #fe80a1 0%, #fb9fa3 100%);
+$gragient-green: linear-gradient(45deg, #78f0b6 0%, #94ebb0 100%);
+$gragient-pink-light: linear-gradient(45deg, #ead5ff 0%, #ffd5db 100%);
+$gragient-blue: linear-gradient(45deg, #3a83e1 0%, #2fa3e1 100%);
+$gragient-violet: linear-gradient(45deg, #8f5cff 0%, #763eec 100%);
+$gragient-orenge: linear-gradient(45deg, #f98656 0%, #fe336d 100%);
+$gragient-blue-violet: linear-gradient(45deg, #763eec 0%, #6782f4 100%);
 
 $navbar-nav-item-height: 60px;
 
 $offcanvas-bar-color-mode: dark;
 $offcanvas-bar-width: 400px;
-$offcanvas-overlay-background: rgba(255,255,255,0.5);
-$offcanvas-bar-background: #f2f2f2;
+$offcanvas-bar-width-m: 400px;
+$offcanvas-overlay-background: rgba(000,000,000,0.5);
+$offcanvas-bar-background: #dcdde5;
+$offcanvas-bar-padding-horizontal-m: 0;
+$offcanvas-bar-padding-vertical-m: 0;
 
-$card-primary-background: $my-primary;
-
-$text-primary-color: $my-primary;
+$card-primary-background: #f6f6f6;
+$text-primary-color: $text-color;
+$card-default-color: $text-color;
+$card-default-background: #f6f6f6;
+$card-default-title-color: $text-color;
 

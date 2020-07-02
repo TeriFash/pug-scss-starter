@@ -1,0 +1,98 @@
+div.ad-calculator.square
+    ul.ab-list-default.uk-list   
+        -
+            let listSum = [
+                { 
+                    title: 'Perfect money', 
+                    sum: '10340.00 USD', 
+                    img: 'img/resourse/pm-1.png'
+                },   
+                { 
+                    title: 'Payeer', 
+                    sum: '10340.00 USD ', 
+                    img: 'img/resourse/p-2.png'
+                }, 
+                { 
+                    title: 'Bitcoin', 
+                    sum: '0.00102000 BTC', 
+                    img: 'img/resourse/b-3.png'
+                },
+                { 
+                    title: 'Ethereum', 
+                    sum: '3.430 ETH', 
+                    img: 'img/resourse/e-4.png'
+                }
+            ];
+        each item in listSum
+            li.ad-li-wrapper
+                img(data-src=item.img uk-img)
+                div
+                    label.uk-form-label(for='form-stacked-select') #{item.title}
+                    .uk-form-controls
+                        select#form-stacked-select.uk-select
+                            option 1034.00 USD
+                            option 134.00 UAH  
+.card
+    - let team = 1;
+    
+    while team <= 16
+        li
+            a.uk-accordion-title(href="#")
+                .block
+                    .data 20.01.2020
+                    .amount #{ '2.2'+ team++ +'44.200 UCN'}
+                    .status Confirmed
+                    .wallet JH7Tusd334j5k4F4LJHK43245reFfdef83
+            .uk-accordion-content
+                span txid:
+                | d334j5k4F4LJHK43JH7Tusd334j5k4F4LJHK43245reFfdef83
+
+//- 'img/resourse/photo-'+ team++ +'.png'  
+div.personal
+  div.ab-title 
+    h2 Personal account
+    -
+      let personalCardList = [
+        { 
+          title: 'Balance', 
+          colorClass: 'pink',
+          data: '2,500,500 UCN',
+          isModal: false,
+          btnDouble: false,
+          btnSingle: ['Buy UNC', '#modal-amount']
+        },
+        { 
+          title: 'Referral balance', 
+          colorClass: 'blue',
+          data: '156  -  700,500 UCN',
+          isModal: false,
+          btnDouble: false,
+          btnSingle: ['Referrals', '/referrals.html']
+        },
+        { 
+          title: 'Total balance', 
+          colorClass: 'violet',
+          data: '100,500 UCN',
+          btnDouble: true,
+          isModal: true,
+          btnDoubleData: ['History', '/history.html'],
+          btnSingle: ['Withdraw', '#modal-withdraw']
+        }
+      ];
+    each item in personalCardList
+      div
+        .ab-color-card.uk-card.uk-card-default.uk-card-body(class=item.colorClass)
+          h3.uk-card-title #{item.title}
+          hr
+          span.data #{item.data}
+          if item.btnDouble
+            a.uk-button.uk-button-default(href=item.btnSingle[1] class=(item.btnDouble ? 'double' : '') uk-toggle )
+              | #{item.btnSingle[0]}
+              span(uk-icon="arrow-right") 
+            a.uk-button.uk-button-default(href=item.btnDoubleData[1] class=(item.btnDouble ? 'double' : ''))
+              | #{item.btnDoubleData[0]}
+              span(uk-icon="arrow-right")
+          else          
+             a.uk-button.uk-button-default(href=item.btnSingle[1] class=(item.btnDouble ? 'double' : '') uk-toggle)
+              | #{item.btnSingle[0]}
+              span(uk-icon="arrow-right")                            

@@ -1,0 +1,11 @@
+mixin action-btn($type, $link, $classes, $icon)
+    - let linkState = ($type === 'back' ? '/' : '/sign-in.html')
+        a.ab-button-min.uk-button.uk-button-text(href=$link || linkState, class=$type, class=$classes)
+            if $icon
+                img(src=$icon alt="")
+            else if $type === 'poweroff'
+                img(src="img/resourse/power-off.png", alt="")
+            else if $type === 'back'    
+                img(src="img/resourse/back.png", alt="")
+
+        

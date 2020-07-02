@@ -1,18 +1,9 @@
-// Import font-awesome
-
 //$fa-font-path: "~font-awesome/fonts";
 //@import '~font-awesome/scss/font-awesome.scss';
 
-// Start custom style scss
-//@import 'custom-style';
-
-// Import responsive class
-//@import 'responsive';
-
-@import url(https://fonts.googleapis.com/css?family=Poppins:400,500,600,700);
-
-// 1. Import main styles
+// 1. Import base styles
 @import "./reset";
+@import "./fonts.css";
 @import "./variables";
 
 // 2. Import default variables and available mixins.
@@ -22,78 +13,12 @@
 // 3. Import UIkit.
 @import "../../node_modules/uikit/src/scss/uikit-theme.scss";
 
+// 4. Import components.
+@import "./utilite";
+@import "./header";
+// @import "./content";
+@import "./footer";
 
-.my-transition {
-  transition: all .3s ease-in-out;
-}
-
-*::selection {
-  background: rgba($my-primary, 0.6);
-}
-
-@import "utilite";
-@import "model/header";
-@import "model/footer";
-@import "model/modal";
-
-@import "elements/buttons";
-
-@import "content";
-
-
-.my-futures {
-  align-items: center;
-
-  li {
-    min-height: 40px;
-    display: flex;
-    font-weight: 500;
-    font-size: 18px;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    margin: 10px 0;
-    text-transform: uppercase;
-    color: inherit;
-    //line-height: 54px;
-    //font-size: 1.3em;
-    letter-spacing: 4px;
-    &:before {
-      //line-height: 54px;
-      font-weight: bold;
-      font-size: 1.5em;
-      margin: 0 10px !important;
-      color: $my-primary !important;
-    }
-  }
-}
-
-
-.my-work {
-  height: calc(100% - 30px);
-  width: calc(100% - 15px);
-  overflow: hidden;
-
-  .my-work-card-item {
-
-    .uk-overlay {
-      margin-bottom: 15px !important;
-    }
-
-    p {
-      color: $global-color !important;
-      font-size: 16px;
-    }
-
-    a {
-      margin-top: 15px;
-      font-weight: 600;
-      background-color: $my-primary !important;
-      color: white !important;
-
-      &:hover, &:visited, &:active {
-        background-color: $my-primary !important;
-      }
-    }
-  }
+body, html {
+    background: $background;
 }

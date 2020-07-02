@@ -3,11 +3,14 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const fs = require('fs');
 
 // Cross Env Setting Webpack
 const isProd = process.env.NODE_ENV === 'production';
+const isSwitch = process.env.NODE_ENV === 'devswitch';
+const jsSwitcher = isSwitch ? 'js-main' : 'js' ;
+const pugSwitcher = isSwitch ? 'pug-main' : 'pug' ;
 
 // Production and Development Path
 const publicPathDev = '';
@@ -42,14 +45,15 @@ const extractSass = new ExtractTextPlugin({
 
 // Setup Dynamic Entry point
 function getEntries (){
-    return fs.readdirSync('./src/js/')
+   
+    return fs.readdirSync('./src/' + jsSwitcher + '/')
         .filter(
             (file) => file.match(/.*\.js$/)
         )
         .map((file) => {
             return {
                 name: file.substring(0, file.length - 3),
-                path: './src/js/' + file
+                path: './src/' + jsSwitcher + '/' + file
             };
         }).reduce((memo, file) => {
             memo[file.name] = file.path;
@@ -63,15 +67,16 @@ function getEntries (){
 
 const entryPoint = getEntries();
 
+
 // Dynamic HtmlWebpackPlugin , not include "app"
 var entryHtmlPlugins = Object.keys(entryPoint).filter(allKey => allKey != 'app').map(function(entryName) {    
     return new HtmlWebpackPlugin({
         filename: entryName + '.html',
-        template: 'src/pug/' + entryName + '.pug',
+        template: 'src/' + pugSwitcher + '/' + entryName + '.pug',
         chunks: [entryName, 'app']
     });
 });
- 
+
 module.exports = {
     entry: entryPoint,
     output: {
@@ -130,38 +135,17 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'img/',
-                    publicPath: 'img/',
+                    outputPath: 'img/resourse',
+                    publicPath: 'img/resourse',
                 },
             },
             {
                 loader: 'image-webpack-loader',
-                options: {
-                    mozjpeg: {
-                        progressive: true,
-                        quality: 65,
-                    },
-                    // Optipng.enabled: false will disable optipng
-                    optipng: {
-                        enabled: false,
-                    },
-                    pngquant: {
-                        quality: '65-90',
-                        speed: 4,
-                    },
-                    gifsicle: {
-                        interlaced: false,
-                    },
-                    // the webp option will enable WEBP
-                    webp: {
-                        quality: 75
-                    }
-                },
             },
             ],
         },
         {
-            test: /.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+            test: /.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
             use: [{
                 loader: 'file-loader',
                 options: {
@@ -179,20 +163,13 @@ module.exports = {
         compress: true,
         host: '0.0.0.0',
         port: 8080,
-        hot: true,
-        //mode: 'development',
-        // stats: 'minimal',
+        // hot: true,
+        stats: 'minimal',
         // for vagrant fix
         stats: {
             color: true,
             modules: false,
-            minimal: true,
-            assets: true,
-            children: false,
-            // outputPath: true
-            performance: true,
-            timings: true
-
+            minimal: false
         },
         watchOptions: {
             poll: true,
@@ -222,36 +199,36 @@ module.exports = {
             // Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip',
             // Util: 'exports-loader?Util!bootstrap/js/dist/util',
         }),
-        new FaviconsWebpackPlugin({
-            // Your source logo
-            logo: './src/img/favicon.png',
-            // The prefix for all image files (might be a folder or a name)
-            prefix: 'img/icons-[hash]/',
-            // Emit all stats of the generated icons
-            emitStats: false,
-            // The name of the json containing all favicon information
-            statsFilename: 'iconstats-[hash].json',
-            // Generate a cache file with control hashes and
-            // don't rebuild the favicons until those hashes change
-            persistentCache: true,
-            // Inject the html into the html-webpack-plugin
-            inject: true,
-            background: '#eaeaea',
-            // Favicon app title (see https://github.com/haydenbleasel/favicons#usage)
-            //title: 'Webpack App',
-            icons: {
-                android: false,
-                appleIcon: false,
-                appleStartup: false,
-                coast: false,
-                favicons: true,
-                firefox: false,
-                opengraph: false,
-                twitter: false,
-                yandex: false,
-                windows: false
-            }
-        }),
+        // new FaviconsWebpackPlugin({
+        //     // Your source logo
+        //     logo: './src/img/favicon.png',
+        //     // The prefix for all image files (might be a folder or a name)
+        //     prefix: 'img/icons-[hash]/',
+        //     // Emit all stats of the generated icons
+        //     emitStats: false,
+        //     // The name of the json containing all favicon information
+        //     statsFilename: 'iconstats-[hash].json',
+        //     // Generate a cache file with control hashes and
+        //     // don't rebuild the favicons until those hashes change
+        //     persistentCache: true,
+        //     // Inject the html into the html-webpack-plugin
+        //     inject: true,
+        //     background: '#eaeaea',
+        //     // Favicon app title (see https://github.com/haydenbleasel/favicons#usage)
+        //     //title: 'Webpack App',
+        //     icons: {
+        //         android: false,
+        //         appleIcon: false,
+        //         appleStartup: false,
+        //         coast: false,
+        //         favicons: true,
+        //         firefox: false,
+        //         opengraph: false,
+        //         twitter: false,
+        //         yandex: false,
+        //         windows: false
+        //     }
+        // }),
         new CleanWebpackPlugin(pathsToClean),
         extractSass
     ].concat(entryHtmlPlugins)

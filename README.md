@@ -1,4 +1,4 @@
-# My site visit card / Webpack + pug + scss
+# Start kit for site
 
 List of command line:
 
@@ -9,14 +9,10 @@ Watch mode in development.
 `yarn start`
 
 All output at `dist` folder.  
-
-# Feature pack
+# Used in this package
 1. Babel for ES6 JS
-2. Pug template 
+2. Pug 
 3. Scss 
-4. Eslint
+4. Jquery
 5. UIKit
-6. Dynamic webpack config entry point and output 
-
-
 

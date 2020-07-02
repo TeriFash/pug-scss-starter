@@ -1,90 +1,72 @@
-// ----------- mouse effect
+// Media mixin
+$units: 1px !default;
 
-.my-mouse {
-  position: absolute;
-  transition: all 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  width: 28px;
-  height: 50px;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-left: -12px;
-  border-radius: 15px;
-  //border: 2px solid #888;
-  background: $global-background;
-  box-shadow: 0px -6px 10px rgba(255, 255, 255, 1), 0px 4px 15px rgba(0, 0, 0, 0.15);
-  -webkit-animation: intro 1s;
-  animation: intro 1s;
-
-  &:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    border-radius: 15px;
-  }
-
-  &:focus {
-    border: none;
-    outline: 0 !important;
-    outline-style: none;
-  }
-
-  &:hover, &:active {
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.02);
-    &:after {
-      box-shadow: inset 0px -2px 5px rgb(255, 255, 255),
-      inset 0px 2px 5px rgba(0, 0, 0, 0.15);
+@mixin screen($res-first, $res-last: $res-first)
+{
+  @if $res-first == $res-last
+  {
+    @media screen and ( max-width: if(unitless($res-first), $res-first*$units, $res-first) )
+    {
+      @content;
     }
   }
-
-  & .scroll {
-    display: block;
-    width: 3px;
-    height: 3px;
-    margin: 6px auto;
-    border-radius: 6px;
-    background: $my-primary;
-    -webkit-animation: finger 2s infinite;
-    animation: finger 2s infinite;
+  @else if $res-first < $res-last
+  {
+    @media screen and ( min-width: if(unitless($res-first), $res-first*$units, $res-first) ) and ( max-width: if(unitless($res-last), $res-last*$units, $res-last) )
+    {
+      @content;
+    }
   }
 }
 
-.uk-offcanvas-container {
-  .my-mouse {
-    transition: all 1s ease-in-out;
-    opacity: 0;
-    bottom: -100px;
+@mixin min-screen($res)
+{
+  @media screen and ( min-width: if(unitless($res), $res*$units, $res) )
+  {
+    @content;
   }
 }
 
+// Responsive Fonts
 
-@keyframes intro {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) translateX(-50%);
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
+
+  @return $number;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+  $f-min: strip-unit($f-min);
+  $f-max: strip-unit($f-max);
+  $w-min: strip-unit($w-min);
+  $w-max: strip-unit($w-max);
+  
+	$k: ($f-max - $f-min)/($w-max - $w-min);
+	$b: $f-min - $k * $w-min;
+
+	$b: $b + $units;
+
+	@return calc( #{$k} * 100vw + #{$b} );
+}
+
+@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+  
+  font-size: $f-min;
+  
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+    font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);  
+  }
+  @media (min-width: $w-max) {
+    font-size: $f-max;
   }
 }
 
-
-@keyframes finger {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-// link underbar
+// Underline
 
 .underbar a,
 a.underbar {
@@ -99,17 +81,26 @@ a.underbar {
 .underbar a::after,
 a.underbar::after {
   position: absolute;
-  background: rgba($my-primary, 0.7);
+  background: rgba($accent, 0.7);
   content: '';
-  bottom: 0;
+  bottom: -4px;
   left: 0;
   width: 0;
   height: 2px;
   transition: all .3s ease;
+}
 
+.underbar .uk-active a::after {
+  width: 100%;
 }
 
 .underbar a:hover::after,
 a.underbar:hover::after {
-  width: 100%
+  width: 100%;
+}
+
+// Animation
+
+.my-transition {
+  transition: all .3s ease-in-out;
 }
