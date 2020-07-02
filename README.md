@@ -1,4 +1,4 @@
-# My site visit card / Webpack + pug + scss
+# Start kit for site / Webpack + pug + scss
 
 List of command line:
 
