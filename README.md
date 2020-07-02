@@ -1,4 +1,4 @@
-# Start kit for site / Webpack + pug + scss
+# Start kit for site
 
 List of command line:
 
