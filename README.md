@@ -1,14 +1,20 @@
-# Start kit for site
+## Start kit for static site
 
 List of command line:
 
-`npm i` install all packages.
+🏃 Run installation dependencies.<br />
 
-Watch mode in development.
-`npm run start`
-`yarn start`
+> `npm install` or `yarn install`
 
-All output at `dist` folder.  
+☄ Watch mode in development.<br />
+
+> `npm start` or `yarn start`
+
+🎁 Build production version.<br />
+
+> `npm prod` or `yarn prod`
+
+✍ All output at `dist` folder.  
 
 # Feature pack
 1. Babel for ES6 JS
